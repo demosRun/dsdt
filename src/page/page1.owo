@@ -1,0 +1,46 @@
+<template lang="pug">
+.page-1
+  img.so.so-0(src="@|111.jpg|")
+  img.so.so-1(src="@|34.png|" o-animation="flicker")
+  img.so.so-2(src="@|108.png|")
+
+</template>
+
+<script>
+  module.exports = {
+    created: function () {
+      owo.tool.touch({
+        el: this.$el,
+        end: function (params) {
+          console.log(params)
+          if (params.swipe[0] > 50) {
+            owo.go('page2//scaleDown/scaleUpDown/true')
+          }
+        }
+      })
+    }
+  }
+</script>
+
+
+<style lang="less">
+.so {
+  position: absolute;
+}
+.so-0 {
+  left: 0px;
+  top: 0px;
+  z-index: 0;
+}
+.so-1 {
+  left: 270px;
+  top: 993px;
+  z-index: 1;
+}
+.so-2 {
+  left: 216px;
+  top: 1036px;
+  z-index: 0;
+}
+
+</style>
