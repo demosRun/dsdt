@@ -54,62 +54,6 @@ li {
   list-style: none;
 }
 
-.loading-box {
-  width: 100%;
-  height: 100%;
-  background-image: url('https://cunchu.site/ozzx/resource/lanse.jpg');
-}
-
-.loading-box .loading {
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: -16%;
-  bottom: 0;
-  margin: auto;
-}
-
-.loading-box .loading-bar {
-  position: absolute;
-  top: 0%;
-  bottom: 0%;
-  height: 20px;
-  background-color: white;
-  width: 80%;
-  margin: auto;
-  left: 0;
-  right: 0;
-  border-radius: 20px;
-  padding: 10px;
-  box-shadow: 2px 3px 9px #5d739c;
-}
-
-.loading-box .num-bar {
-  background-color: #e47d6e;
-  height: 20px;
-  border-radius: 20px;
-  width: 0%;
-  transition: width 0.5s;
-}
-
-.loading-box .num,
-.loading-box .text {
-  position: absolute;
-  top: 0%;
-  bottom: -8%;
-  margin: auto;
-  line-height: 50px;
-  height: 50px;
-  font-size: 36px;
-  width: 100%;
-  text-align: center;
-  color: white;
-  font-weight: bold;
-}
-
-.loading-box .text {
-  bottom: -14%;
-}
 @-webkit-keyframes flicker {
   from {
     opacity: 100%;
@@ -156,8 +100,144 @@ li {
   top: 1036px;
   z-index: 0;
 }
+.page2 {
+  background-image: url('../resource/dtbg.png');
+}
 
+.page2 .last {
+  position: absolute;
+  left: 110px;
+  bottom: 260px;
+}
 
+.page2 .next {
+  position: absolute;
+  right: 0;
+  left: 0;
+  bottom: 260px;
+  margin: 0 auto;
+}
+
+.page2 .index {
+  position: absolute;
+  top: 200px;
+  left: 90px;
+  font-size: 32px;
+  line-height: 46px;
+}
+
+.page2 .index .ind {
+  display: block;
+  color: #3a3a3a;
+}
+
+.page2 .index .type {
+  display: block;
+  color: #d40000;
+}
+
+.page2 .connt {
+  position: absolute;
+  top: 340px;
+  width: 600px;
+  left: 0;
+  right: 0;
+  margin: auto;
+  height: 790px;
+  overflow: auto;
+}
+
+.page2 .connt .title {
+  color: #3a3a3a;
+  font-size: 38px;
+  line-height: 48px;
+  margin-bottom: 40px;
+}
+
+.page2 .connt .title input {
+  height: 50px;
+  border: none;
+  border-bottom: 2px solid #ccc;
+  display: inline-block;
+  margin: 0 10px;
+  width: 200px;
+  background-color: transparent;
+  font-size: 30px;
+  text-align: center;
+}
+
+.page2 .connt .item {
+  font-size: 36px;
+  background-color: white;
+  padding: 8px;
+  text-align: center;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  line-height: 70px;
+  margin-bottom: 30px;
+  position: relative;
+}
+
+.page2 .connt .item span {
+  pointer-events: none;
+}
+
+.page2 .connt .num {
+  position: absolute;
+  left: 20px;
+  background-color: #ededed;
+  width: 60px;
+  border-radius: 30px;
+  height: 60px;
+  line-height: 60px;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+}
+
+.page2 .connt .check {
+  background-color: #ccc;
+}
+
+.page2 .connt .item.right {
+  background-color: #d40000;
+  color: white;
+}
+
+.page2 .connt .item.right .num {
+  background-color: white;
+  color: #d40000;
+}
+
+.page2 .title video {
+  width: 100%;
+  height: auto;
+  margin-bottom: 5px;
+  display: block;
+}
+
+.page2 .title audio {
+  display: block;
+  width: 100%;
+  margin-bottom: 40px;
+}
+
+.page2 .send {
+  height: 80px;
+  line-height: 80px;
+  text-align: center;
+  background-color: #d40000;
+  color: white;
+  font-size: 36px;
+  width: 80%;
+  display: block;
+  border-radius: 20px;
+  margin: 0 auto;
+  margin-top: 60px;
+}
+.page3 {
+  background-image: url('../resource/end.jpg');
+}
 /* 页面切换动画 */
 .o-page-scaleDown {
 	-webkit-animation: scaleDown .7s ease both;

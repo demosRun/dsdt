@@ -1,10 +1,208 @@
 <template lang="pug">
 .page2
-  
+  .index
+    span.ind 1/200
+    span.type 单选题
+  .connt
+    .title 中国共产党第一次全国代表大会先后在(    )召开。
+    .answer-box
+      .item(onclick="check(0)")
+        span.num A
+        span.text 上海、嘉兴
+      .item.right
+        span.num A
+        span.text 上海、嘉兴
+      .item
+        span.num A
+        span.text 上海、嘉兴
+      .item
+        span.num A
+        span.text 上海、嘉兴
+  //- img.last(src="@|last.png|" o-tap="last")
+  img.next(src="@|next.png|" o-tap="next")
 </template>
 <script>
 module.exports = {
+  created: function () {
+    this.changeTM()
+  },
+  changeTM: function () {
+    this.query('.index').innerHTML = `<span class="ind">${activeIndex + 1}/${timu.length}</span><span class="type">${timu[activeIndex].type}</span>`
+    
+    let duiying = ['A', 'B', 'C', 'D']
+    let daan = ''
+    let tempInd = 0
+    switch (timu[activeIndex].type) {
+      case '视频题':
+      case '音频题':
+      case '单选题':
+        timu[activeIndex].answer.forEach(element => {
+          daan += `<div class="item" onclick="check(${tempInd}, this)"><span class="num">${duiying[tempInd]}</span><span class="text">${element}</span></div>`
+          tempInd ++
+        });
+        break;
+      case '多选题':
+        timu[activeIndex].answer.forEach(element => {
+          daan += `<div class="item" onclick="check2(${tempInd}, this)"><span class="num">${duiying[tempInd]}</span><span class="text">${element}</span></div>`
+          tempInd ++
+        });
+        daan += '<div class="send" onclick="check(0, this)">提交</div>'
+        break;
+      case '判断题':
+        timu[activeIndex].answer.forEach(element => {
+          daan += `<div class="item" onclick="check(${tempInd}, this)"><span class="text">${element}</span></div>`
+          tempInd ++
+        });
+        
+        break;
+      case '填空题':
+        timu[activeIndex].title = timu[activeIndex].title.replaceAll('[输入]', '<input class="shuru" type="text">')
+        daan += '<div class="send" onclick="check(0, this)">提交</div>'
+        break;
+      default:
+        break;
+    }
+    this.query('.title').innerHTML = timu[activeIndex].title
+    this.query('.answer-box').innerHTML = daan
+  },
+  next: function () {
+    if (!timu[activeIndex + 1]) {
+      owo.go('page3//scaleDown/scaleUpDown/true')
+      return
+    }
+    activeIndex++
+    this.changeTM()
+  },
+  last: function () {
+    if (!timu[activeIndex - 1]) {
+      owo.tool.toast('已经是第一题了!')
+      return
+    }
+    activeIndex--
+    this.changeTM()
+  }
 }
 </script>
 <style lang="less">
+.page2 {
+  background-image: url('@|dtbg.png|');
+}
+.last {
+  position: absolute;
+  left: 110px;
+  bottom: 260px
+}
+.next {
+  position: absolute;
+  right: 0;
+  left: 0;
+  bottom: 260px;
+  margin: 0 auto;
+}
+.index {
+  position: absolute;
+  top: 200px;
+  left: 90px;
+  font-size: 32px;
+  line-height: 46px;
+  .ind {
+    display: block;
+    color: #3a3a3a;
+  }
+  .type {
+    display: block;
+    color: #d40000;
+  }
+}
+.connt {
+  position: absolute;
+  top: 340px;
+  width: 600px;
+  left: 0;
+  right: 0;
+  margin: auto;
+  height: 790px;
+  overflow: auto;
+  .title {
+    color: #3a3a3a;
+    font-size: 38px;
+    line-height: 48px;
+    margin-bottom: 40px;
+    input {
+      height: 50px;
+      border: none;
+      border-bottom: 2px solid #ccc;
+      display: inline-block;
+      margin: 0 10px;
+      width: 200px;
+      background-color: transparent;
+      font-size: 30px;
+      text-align: center;
+    }
+  }
+  .item {
+    font-size: 36px;
+    background-color: white;
+    padding: 8px;
+    text-align: center;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    line-height: 70px;
+    margin-bottom: 30px;
+    position: relative;
+    span {
+      pointer-events: none;
+    }
+    
+  }
+  .num {
+    position: absolute;
+    left: 20px;
+    background-color: #ededed;
+    width: 60px;
+    border-radius: 30px;
+    height: 60px;
+    line-height: 60px;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+  }
+  .check {
+    background-color: #ccc;
+  }
+  .item.right {
+    background-color: #d40000;
+    color: white;
+    .num {
+      background-color: white;
+      color: #d40000;
+    }
+  }
+}
+.title {
+  video {
+    width: 100%;
+    height: auto;
+    margin-bottom: 5px;
+    display: block;
+  }
+  audio {
+    display: block;
+    width: 100%;
+    margin-bottom: 40px;
+  }
+}
+.send {
+  height: 80px;
+  line-height: 80px;
+  text-align: center;
+  background-color: #d40000;
+  color: white;
+  font-size: 36px;
+  width: 80%;
+  display: block;
+  border-radius: 20px;
+  margin: 0 auto;
+  margin-top: 60px;
+}
 </style>

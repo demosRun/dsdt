@@ -7,4 +7,7 @@ module.exports = {
 }
 </script>
 <style lang="less">
+.page3 {
+  background-image: url('@|end.jpg|');
+}
 </style>

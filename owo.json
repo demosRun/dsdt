@@ -90,6 +90,11 @@
 			"name": "touch",
 			"afterbody": true,
 			"src": "./owo_modules/touch.js"
+		},
+		{
+			"name": "toast",
+			"afterbody": true,
+			"src": "./owo_modules/toast.js"
 		}
 	],
 	"styleList": [
@@ -100,11 +105,6 @@
 		}
 	],
 	"pageList": [
-		{
-			"name": "loading",
-			"src": "https://template.owo.ink/896590e716ebcc0d.owo",
-			"type": "page"
-		},
 		{
 			"name": "page1",
 			"src": "./src/page/page1.owo",
